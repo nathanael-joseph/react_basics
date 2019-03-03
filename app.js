@@ -37,34 +37,34 @@ const Player = (props) => {
             <span className="player-name">
                 {props.playerName}
             </span>  
-            <Counter 
-            score={props.score}
-            />          
+            <Counter />          
         </div>
     );
 }
 // using classes to create components.
 class Counter extends React.Component {
+   
+    // constructor(){
+    //     super()
+    //     this.state = {
+    //         score : 0
+    //     }
+    // }
+    // can be simplified to :
+    state = { score: 0 }
+    // but this is not supported in all browsers. 
+
     render() {
         return(
             <div className="counter">
                 <button className="counter-action decrement"> - </button>
-                <span className="counter-score">{this.props.score}</span>
+                <span className="counter-score">{this.state.score}</span>
                 <button className="counter-action increment"> + </button>
             </div>
         );
     }
 }
 
-// const Counter = (props) => {
-//     return(
-//             <div className="counter">
-//                 <button className="counter-action decrement"> - </button>
-//                 <span className="counter-score">{props.score}</span>
-//                 <button className="counter-action increment"> + </button>
-//             </div>
-//     );
-// }
 
 const App = (props) => {
     return (
@@ -77,7 +77,6 @@ const App = (props) => {
                 player => 
                 <Player 
                 playerName={player.name}
-                score={player.score}
                 key={player.id.toString()}
             />
             )} 

@@ -21,7 +21,6 @@ let players = [
       }
 ];
 
-
 // component as funtion
 function Header (props) {
     return (
@@ -44,15 +43,28 @@ const Player = (props) => {
         </div>
     );
 }
-const Counter = (props) => {
-    return(
+// using classes to create components.
+class Counter extends React.Component {
+    render() {
+        return(
             <div className="counter">
                 <button className="counter-action decrement"> - </button>
-                <span className="counter-score">{props.score}</span>
+                <span className="counter-score">{this.props.score}</span>
                 <button className="counter-action increment"> + </button>
             </div>
-    );
+        );
+    }
 }
+
+// const Counter = (props) => {
+//     return(
+//             <div className="counter">
+//                 <button className="counter-action decrement"> - </button>
+//                 <span className="counter-score">{props.score}</span>
+//                 <button className="counter-action increment"> + </button>
+//             </div>
+//     );
+// }
 
 const App = (props) => {
     return (

@@ -54,12 +54,27 @@ class Counter extends React.Component {
     state = { score: 0 }
     // but this is not supported in all browsers. 
 
+    // use arrow function to bind automatically.
+    incrementScore = () => {
+        this.setState( previousState => ({
+            score: previousState.score + 1
+            }));
+    }
+    
+    // bind using javascipt's bind method.
+    decrementScore() {
+        this.setState( previousState => ({           
+                score: previousState.score -1
+            }));   
+    }
+
     render() {
         return(
             <div className="counter">
-                <button className="counter-action decrement"> - </button>
+                {/* Binding is performed in the onClick event handler definition */}
+                <button className="counter-action decrement" onClick={this.decrementScore.bind(this)}> - </button>
                 <span className="counter-score">{this.state.score}</span>
-                <button className="counter-action increment"> + </button>
+                <button className="counter-action increment" onClick={this.incrementScore}> + </button>
             </div>
         );
     }

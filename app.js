@@ -1,18 +1,18 @@
 // component as funtion
-function Header () {
+function Header (props) {
     return (
         <header>
-            <h1>Scoreboard</h1>
-            <span className="stats">Players: 1</span>
+            <h1>{ props.title }</h1>
+            <span className="stats">Players: {props.totalyPlayers}</span>
         </header>
     );
 }
 // component as arrow function.
-const Player = () => {
+const Player = (props) => {
     return (
         <div className="player">
             <span className="player-name">
-                Nathan
+                {props.playerName}
             </span>  
             <Counter />          
         </div>
@@ -30,10 +30,10 @@ const Counter = () => {
 
 const App = () => {
     return (
-        <div className="scoreBoard">
-            <Header />
+        <div className="scoreboard">
+            <Header title="My Scoreboard" totalyPlayers={1}/>
             {/* Players list */}
-            <Player />
+            <Player playerName="Nathanael"/>
         </div>
     );
 }
